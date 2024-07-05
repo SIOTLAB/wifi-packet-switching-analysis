@@ -37,16 +37,60 @@ List the main components of this project:
     cd wifi-packet-switching-analysis/testbed
     ```
 3. add configuration for all servers:
-    '''sh
+    ```sh
     vim ssh.json
-    '''
+    # add necessary server ip and passwd
+    ```
 4. start test.
     ```sh
-    python3 ./pipeline
+    python3 ./pipeline.py
     ```
 5. adjust the parameter of test if necessary
+
 ## Usage for perf and flamegraph
 
+1. Use perf to get the data of processor cycles
+    ```sh
+    perf record -e cycles:k -C 0,1 sleep 10
+    ```
+2. git clone Flamegraph
+    ```sh
+    git clone https://github.com/brendangregg/FlameGraph  # or download it from github
+    ```
+3. get the flamegraph
+   ```sh
+    # perf script | ./FlameGraph/stackcollapse-perf.pl > out.perf-folded
+    # ./FlameGraph/flamegraph.pl out.perf-folded > perf.svg # view this graph in Firefox or chrome
+    ```
+
+## Configuration
+
+1. set Processor CPU affinity 
+    ```sh
+    cat /proc/interrupts    #check the IRQ number of ethernet or wireless
+    sudo su
+    echo 2 > /proc/irq/xx/smp_affinity
+    ```
+
+2. other configurations that we needed in test
+    ```sh
+    sudo sysctl -w net.ipv4.ip_forward=1
+    sudo iw wlan0 set power_save off
+    sudo tc qdisc add dev eth1 root fq_codel
+    sudo ethtool -K eth1 generic-segmentation-offload off
+    sudo ethtool -K eth1 generic-receive-offload off
+    sudo ethtool -K wlan0 generic-segmentation-offload off
+    sudo ethtool -K wlan0 generic-receive-offload off
+    sudo sysctl -w net.core.netdev_budget=300
+    sudo sysctl -w net.core.netdev_budget_usecs=8000
+    sudo sysctl -w net.core.dev_weight=64
+    ```
+
+3. use perf for l1-dcache invalidation and content-switching
+    ```sh
+    perf stat -e l1d-cache-invalidation -C 0,1 sleep 10
+    perf stat -e context-switches -C 0,1 sleep 10
+    ```
 ## Contacts
 Shiqi Zhang  szhang9@scu.edu
 Mridul Gupta  magupt@scu.edu
