@@ -27,9 +27,3 @@ def establish_ssh(name):
     username=data[name]["uname"]
     password=data[name]["pwd"]
     return establish_ssh_connection(remote_host,username,password)
-
-# rpi = establish_ssh("ap")
-# stdin, stdout, stderr=rpi.exec_command("nohup sudo -S /home/ap/rpi > /dev/null 2>&1 & echo $!")
-# print("stdout:", stdout.read().decode())
-# print("stderr:", stderr.read().decode())
-# print(pid)

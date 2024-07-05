@@ -20,15 +20,9 @@ Packet Switching on WiFi Access Points paper.
 ## Features
 
 List the main components of this project:
-- Testbed (performance matrix)
-   The meassurement process conducted automatelly
-   The data from different servers retrieved automatically
-   Testbed runs the first check for data validation
-   Testbed will restart the testbed from the endpoint or unfinished tests
+- testbed (performance matrix) : 1.The meassurement process conducted automatelly. 2.The data from different servers retrieved automatically. 3.Testbed runs the first check for data validation. 4.Testbed will restart the testbed from the endpoint or unfinished tests
 
-- Data analysis
-   Data analysis process find and use the valid time interval data
-   Data analysis process will process the data for better visualization
+- Data_analysis: 1. Data analysis process find and use the valid time interval data. 2.Data analysis process will process the data for better visualization
 
 - Figures
 
@@ -40,14 +34,17 @@ List the main components of this project:
     ```
 2. Navigate to the project directory:
     ```sh
-    cd wifi-packet-switching-analysis
+    cd wifi-packet-switching-analysis/testbed
     ```
-3. Install dependencies:
+3. add configuration for all servers:
+    '''sh
+    vim ssh.json
+    '''
+4. start test.
     ```sh
-    apt-get install 
+    python3 ./pipeline
     ```
-4. Additional setup steps if necessary.
-
+5. adjust the parameter of test if necessary
 ## Usage for perf and flamegraph
 
 ## Contacts
