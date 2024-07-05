@@ -6,8 +6,7 @@ A brief description of what your project does.
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Usage for perf and flamegraph](#usage)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 - [License](#license)
@@ -51,4 +50,8 @@ List the main components of this project:
 
 ## Usage for perf and flamegraph
 
-
+## Contacts
+Shiqi Zhang  szhang9@scu.edu
+Mridul Gupta  magupt@scu.edu
+Behnam Dezfouli bdezfouli@scu.edu
+ 
