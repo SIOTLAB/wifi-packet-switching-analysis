@@ -59,8 +59,8 @@ List the main components of this project:
     ```
 3. get the flamegraph
    ```sh
-    # perf script | ./FlameGraph/stackcollapse-perf.pl > out.perf-folded
-    # ./FlameGraph/flamegraph.pl out.perf-folded > perf.svg # view this graph in Firefox or chrome
+    perf script | ./FlameGraph/stackcollapse-perf.pl > out.perf-folded
+    ./FlameGraph/flamegraph.pl out.perf-folded > perf.svg # view this graph in Firefox or chrome
     ```
 
 ## Configuration
